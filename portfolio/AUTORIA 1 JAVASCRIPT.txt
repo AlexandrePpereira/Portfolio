@@ -1,0 +1,14 @@
+CODIGO PARA CALCULAR SE UM NUMERO É PAR OU ÍMPAR
+
+function verificarParOuImpar(nmr) {
+  if (nmr % 2 === 0) {
+    return "Par";
+  } else {
+    return "Ímpar";
+  }
+}
+
+console.log(verificarParOuImpar(5));    
+console.log(verificarParOuImpar(10));   
+console.log(verificarParOuImpar(23));   
+console.log(verificarParOuImpar(42));   

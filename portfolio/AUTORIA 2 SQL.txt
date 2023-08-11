@@ -1,0 +1,52 @@
+CODIGO PARA UMA LOJA PEQUENA DE VENDA DE ROUPA
+
+
+
+CREATE TABLE Clientes (
+    id_cliente INT PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(100),
+    telefone VARCHAR(20)
+);
+
+CREATE TABLE Produtos (
+    id_produto INT PRIMARY KEY,
+    nome VARCHAR(100),
+    descricao TEXT,
+    preco DECIMAL(10, 2)
+);
+
+CREATE TABLE Pedidos (
+    id_pedido INT PRIMARY KEY,
+    id_cliente INT,
+    data_pedido DATE,
+    total DECIMAL(10, 2),
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
+);
+
+CREATE TABLE ItensPedido (
+    id_item INT PRIMARY KEY,
+    id_pedido INT,
+    id_produto INT,
+    quantidade INT,
+    subtotal DECIMAL(10, 2),
+    FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido),
+    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto)
+);
+INSERT INTO Clientes (id_cliente, nome, email, telefone)
+VALUES (1, 'João Silva', 'joao@email.com', '(11) 1234-5678');
+
+INSERT INTO Produtos (id_produto, nome, descricao, preco)
+VALUES (1, 'Camiseta', 'Camiseta de algodão preta', 29.99);
+
+INSERT INTO Produtos (id_produto, nome, descricao, preco)
+VALUES (2, 'Calça Jeans', 'Calça jeans azul', 49.99);
+
+INSERT INTO Pedidos (id_pedido, id_cliente, data_pedido, total)
+VALUES (1, 1, '2023-08-11', 79.98);
+
+INSERT INTO ItensPedido (id_item, id_pedido, id_produto, quantidade, subtotal)
+VALUES (1, 1, 1, 2, 59.98);
+
+INSERT INTO ItensPedido (id_item, id_pedido, id_produto, quantidade, subtotal)
+VALUES (2, 1, 2, 1, 19.99);
